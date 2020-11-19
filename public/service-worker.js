@@ -8,8 +8,8 @@ const urlsToCache = [
   "/index.js",
   "/manifest.json",
   "/styles.css",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png"
+  "/assets/images/icon-192x192.png",
+  "/assets/images/icon-512x512.png"
 ];
 
 // This code as you might imagine fires of when the user has chosen to install the web app on their machine as a standalone PWA. You won't need to modify this code. Keep it exactly as-is.
