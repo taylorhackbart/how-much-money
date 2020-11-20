@@ -9,7 +9,8 @@ const PORT = 3000;
 const app = express();
 
 app.use(logger("dev"));
-app.use(favicon(__dirname + '/public/favicon.png'));
+app.use(favicon(__dirname + '/public/assets/images/icon-192x192.png'));
+app.use(favicon(__dirname + '/public/assets/images/icon-512x512.png'));
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
