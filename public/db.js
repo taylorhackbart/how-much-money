@@ -1,4 +1,4 @@
-// Different browsers can have different names for the indexedDB object, so we standardize that here
+// STANDARDIZE VARIABLES FOR DIFFERENT BROWSER TYPES
 const indexedDB =
   window.indexedDB ||
   window.mozIndexedDB ||
@@ -8,37 +8,35 @@ const indexedDB =
 
 let db;
 
-// Tell indexedDb to open (or create) whatever database you want to work with
+//CREATE OR OPEN DATABASE
 const request = indexedDB.open("budget", 1);
 
-// Set up your object store
+//OBJECT STORE FOR INDEXEDDB
 request.onupgradeneeded = ({ target }) => {
   let db = target.result;
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-// Leave this code as-is
+
 request.onsuccess = ({ target }) => {
   db = target.result;
-  // check if app is online before reading from db
   if (navigator.onLine) {
     checkDatabase();
   }
 };
 
-// Simple error handler. Leave as-is
 request.onerror = function(event) {
   console.log("Woops! " + event.target.errorCode);
 };
 
-// This function is called when it's time to save data to the indexedDb
+//SAVE TO INDEXEDDB
 function saveRecord(record) {
   const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
   store.add(record);
 }
 
-// This function runs when we detect that the internet connection is working again. It sends a post request to the server with all the saved data so that the data can be synced with the server, and then it wipes out the existing indexedDb. You can keep as-is, unless you want to change the name of the fetch route.
+//THIS WILL CHECK THE ENTERED DATA TO ENSURE THE DATABASE MATCHES WHAT HAS BEEN INPUTTED, AND WILL ADD DATA THAT WAS MISSED DURING THE OFFLINE PERIOD
 function checkDatabase() {
   const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
@@ -58,7 +56,6 @@ function checkDatabase() {
         return response.json();
       })
       .then(() => {
-        // delete records if successful
         const transaction = db.transaction(["pending"], "readwrite");
         const store = transaction.objectStore("pending");
         store.clear();
@@ -67,5 +64,4 @@ function checkDatabase() {
   };
 }
 
-// listen for app coming back online
 window.addEventListener("online", checkDatabase);

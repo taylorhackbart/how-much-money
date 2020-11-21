@@ -1,63 +1,66 @@
-# Unit 18 PWA Homework: Online/Offline Budget Trackers
+# Track Your Money!
 
-Add functionality to our existing Budget Tracker application to allow for offline access and functionality.
+## Description
 
-The user will be able to add expenses and deposits to their budget with or without a connection. When entering transactions offline, they should populate the total when brought back online.
+In this application, a user is able to add and subtract funds to show the total amount of money in their account. A graph is shown that displays the fluctuation in funds. A user can input an amount while the server is offline, and these will be displayed in the browser, and will be pushed into the database once the user has returned online. 
 
-Offline Functionality:
+The live version of the app is deployed on Heroku, and can be accessed <a href="https://glacial-fortress-58963.herokuapp.com/">here. </a>
 
-  * Enter deposits offline
+## Usage
 
-  * Enter expenses offline
+Once a user enters the site for the first time, they will be shown a screen with no data:
 
-When brought back online:
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/start.png">
 
-  * Offline entries should be added to tracker.
+They will then be able to add or subtract funds:
 
-## User Story
-AS AN avid traveller
-I WANT to be able to track my withdrawals and deposits with or without a data/internet connection
-SO THAT my account balance is accurate when I am traveling
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/add.png">
 
-## Business Context
+Once funds have been deposited or withdrawn, it will display as shown: 
 
-Giving users a fast and easy way to track their money is important, but allowing them to access that information anytime is even more important. Having offline functionality is paramount to our applications success.
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/example.png">
+
+These will be added into the database (using MongoDB Atlas):
+
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/atlas1.png">
 
 
-## Acceptance Criteria
-GIVEN a user is on Budget App without an internet connection
-WHEN the user inputs a withdrawal or deposit
-THEN that will be shown on the page, and added to their transaction history when their connection is back online.
+Here, I am showing that I am switching to offline mode for my next sample entries:
 
-- - -
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/offline.png">
 
-## Commit Early and Often
+Once a user loses service, they will still be able to keep track of their entries and they will be displayed on the screen, same as before:
 
-* One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/offlinefunds.png">
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills
+These errors will appear in the console, however, the data will still be pushed to the database once the user has access to internet again:
 
-2. Your commit history allows you to revert your code base in the event that you need to return to a previous state
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/offlineError.png">
 
-* Follow these guidelines for committing:
+Switching back to online:
 
-  * Make single purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/online.png">
 
-  * Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history
+Entering a new transaction "More Money":
 
-  * Don't commit half done work, for the sake of your collaborators (and your future self!)
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/onAndOffline.png">
 
-  * Test your application before you commit to ensure functionality at every step in the development process
+All three transactions will now be displayed in the database:
 
-* We would like you to have well over 200 commits by graduation, so commit early and often!
+<img src="https://github.com/taylorhackbart/how-much-money/blob/master/readmeimages/atlas2.png">
 
-* Deploy your application with [Heroku and MongoDB Atlas.](../04-Supplemental/MongoAtlas-Deploy.md)
+## Installation
 
-## Submission on BCS
+To use or update this application, fork the repository and run "npm install" in the command line. While the packages should be installed and ready to use after running this, if "MODULE_NOT_FOUND" errors pop up, install express, mongoose, compression and morgan. Morgan is not a required package, but it does help to know the status of your routes as they are being fired. 
 
-* You are required to submit the following:
+To run this locally, in the command line enter "node server.js" and direct yourself to "localhost:3000/"
 
-  * the URL to the deployed application
+## Technologies Used
 
-  * the URL to the Github repository
+This application primarily uses JavaScript, Mongoose, MongoDB, Express, MongoDB Atlas, and Heroku
+
+## Credits
+Shout out to Gary (my instructor) for helping us along the way!
+
+
 
